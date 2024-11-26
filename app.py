@@ -20,7 +20,7 @@ def get_name(name: str):
 
 @app.post('/predict')
 def predict_banknote(data : BankNote):
-    data = data.dict()
+    data = dict(data)
     variance=data['variance']
     skewness=data['skewness']
     curtosis=data['curtosis']
@@ -30,6 +30,7 @@ def predict_banknote(data : BankNote):
         prediction="Fake note"
     else:
         prediction="Its a Bank note"
+    print(data, prediction)
     return {
         'prediction': prediction
     }
